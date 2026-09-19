@@ -135,5 +135,29 @@ async def get_agent(agent_name: str):
     except ImportError:
         pass
 
+    try:
+        from agents.computer import ComputerAgent
+        agent_map[AgentType.COMPUTER] = ComputerAgent
+    except ImportError:
+        pass
+
+    try:
+        from agents.calendar import CalendarAgent
+        agent_map[AgentType.CALENDAR] = CalendarAgent
+    except ImportError:
+        pass
+
+    try:
+        from agents.music import MusicAgent
+        agent_map[AgentType.MUSIC] = MusicAgent
+    except ImportError:
+        pass
+
+    try:
+        from agents.file_agent import FileAgent
+        agent_map[AgentType.FILE] = FileAgent
+    except ImportError:
+        pass
+
     cls = agent_map.get(agent_name, ConversationAgent)
     return cls()

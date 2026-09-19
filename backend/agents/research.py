@@ -64,7 +64,7 @@ Be thorough but structured. Use the search and fetch tools to get real data."""
     async def execute_tool(self, tool_name: str, arguments: dict, ctx: AgentContext) -> Any:
         if tool_name == "web_search":
             try:
-                from duckduckgo_search import DDGS
+                from ddgs import DDGS
                 n = arguments.get("num_results", 8)
                 with DDGS() as ddgs:
                     results = list(ddgs.text(arguments["query"], max_results=n))

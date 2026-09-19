@@ -16,7 +16,15 @@ class Settings(BaseSettings):
     # Server
     host: str = "0.0.0.0"
     port: int = 8000
-    cors_origins: list[str] = ["http://localhost:5173", "http://localhost:3000"]
+    cors_origins: list[str] = [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:3000",
+        "https://sam.harnova.my",
+        "https://harnova.my",
+        "https://*.harnova.my",
+        "https://*.pages.dev",  # Cloudflare Pages preview URLs
+    ]
 
     # Auth
     secret_key: str = "change-me-in-production-use-32-char-minimum"
@@ -32,6 +40,8 @@ class Settings(BaseSettings):
     groq_api_key: str = ""
     openai_api_key: str = ""
     anthropic_api_key: str = ""
+    omniroute_url: str = "http://localhost:20128/v1"  # OmniRoute local proxy (290+ providers)
+    omniroute_api_key: str = ""  # OmniRoute API key
 
     # Default models per task type
     model_fast: str = "llama-3.1-8b-instant"              # greetings, ack
